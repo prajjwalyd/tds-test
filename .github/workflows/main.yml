@@ -8,5 +8,5 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: 22f3002676@ds.study.iitm.ac.in
+      - name: "22f3002676@ds.study.iitm.ac.in"
         run: echo "Hello, world!"
