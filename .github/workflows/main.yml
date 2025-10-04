@@ -1,12 +1,36 @@
-name: Email Step Test
+name: Combined Single Job Workflow
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
-  test:
+  combined-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: "Checkout repository"
         uses: actions/checkout@v4
+
       - name: "22f3002676@ds.study.iitm.ac.in"
         run: echo "Hello, world!"
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: "prime-cache-8deb196"
+        id: cache-step
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: cache-8deb196
+          restore-keys: cache-
+
+      - name: "Show cache result"
+        run: |
+          echo "Cache hit status: ${{ steps.cache-step.outputs.cache-hit }}"
+
+      - name: "Install dependencies"
+        run: |
+          pip install requests numpy
